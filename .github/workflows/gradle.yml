@@ -23,10 +23,14 @@ jobs:
           distribution: 'temurin'
           cache: 'gradle'
 
-      # Шаг 3: Сборка проекта
+      # Шаг 3: Даем права на выполнение gradlew
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+
+      # Шаг 4: Сборка проекта
       - name: Build with Gradle
         run: ./gradlew build
 
-      # Шаг 4: Запуск тестов
+      # Шаг 5: Запуск тестов
       - name: Run tests
         run: ./gradlew test
