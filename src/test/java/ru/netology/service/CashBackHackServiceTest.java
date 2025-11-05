@@ -1,13 +1,12 @@
 package ru.netology.service;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
+import org.testng.Assert;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class CashBackHackServiceTest {
+public class CashBackHackServiceTest {
 
     @Test
-    void shouldReturn100WhenAmount900() {
+    public void shouldReturn100WhenAmount900() {
         // Подготовка
         CashBackHackService service = new CashBackHackService();
         int amount = 900;
@@ -16,12 +15,12 @@ class CashBackHackServiceTest {
         int actual = service.remain(amount);
         int expected = 100;
 
-        // Проверка
-        assertEquals(expected, actual, "При сумме 900 должен возвращать 100");
+        // Проверка (TestNG использует actual, expected)
+        Assert.assertEquals(actual, expected, "При сумме 900 должен возвращать 100");
     }
 
     @Test
-    void shouldReturn0WhenAmount1000() {
+    public void shouldReturn0WhenAmount1000() {
         // Подготовка
         CashBackHackService service = new CashBackHackService();
         int amount = 1000;
@@ -31,22 +30,22 @@ class CashBackHackServiceTest {
         int expected = 0;
 
         // Проверка - ЭТОТ ТЕСТ УПАДЕТ ИЗ-ЗА БАГА!
-        assertEquals(expected, actual, "При сумме 1000 должен возвращать 0");
+        Assert.assertEquals(actual, expected, "При сумме 1000 должен возвращать 0");
     }
 
     @Test
-    void shouldReturn900WhenAmount1100() {
+    public void shouldReturn900WhenAmount1100() {
         CashBackHackService service = new CashBackHackService();
         int amount = 1100;
 
         int actual = service.remain(amount);
         int expected = 900;
 
-        assertEquals(expected, actual, "При сумме 1100 должен возвращать 900");
+        Assert.assertEquals(actual, expected, "При сумме 1100 должен возвращать 900");
     }
 
     @Test
-    void shouldReturn0WhenAmount2000() {
+    public void shouldReturn0WhenAmount2000() {
         CashBackHackService service = new CashBackHackService();
         int amount = 2000;
 
@@ -54,17 +53,17 @@ class CashBackHackServiceTest {
         int expected = 0;
 
         // ЭТОТ ТЕСТ ТОЖЕ УПАДЕТ ИЗ-ЗА БАГА!
-        assertEquals(expected, actual, "При сумме 2000 должен возвращать 0");
+        Assert.assertEquals(actual, expected, "При сумме 2000 должен возвращать 0");
     }
 
     @Test
-    void shouldReturn999WhenAmount1() {
+    public void shouldReturn999WhenAmount1() {
         CashBackHackService service = new CashBackHackService();
         int amount = 1;
 
         int actual = service.remain(amount);
         int expected = 999;
 
-        assertEquals(expected, actual, "При сумме 1 должен возвращать 999");
+        Assert.assertEquals(actual, expected, "При сумме 1 должен возвращать 999");
     }
 }
